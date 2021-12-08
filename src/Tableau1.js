@@ -72,6 +72,10 @@ class Tableau1 extends Phaser.Scene{
 
         //Emojis (touches de Q à M)
 
+
+
+        //Inputs des lumières
+
         initKeyboard(){
             let me=this;
             this.input.keyboard.on('space', function(kevent)
