@@ -14,6 +14,7 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('turquoise-light', 'assets/light/simplelight/turquoiselight.png');
         this.load.image('purple-light', 'assets/light/simplelight/purplelight.png');
         this.load.image('yellow-light', 'assets/light/simplelight/yellowlight.png');
+
         //Les différentes lumières pour l'immeuble en dégradé
         this.load.image('blue-gradient', 'assets/light/colorgradient/bluegradient.png');
         this.load.image('green-gradient', 'assets/light/colorgradient/greengradient.png');
@@ -28,7 +29,15 @@ class Tableau1 extends Phaser.Scene {
         //Le paysage
         this.load.image('building', 'assets/level/building.png');
 
-        //Les différents éléments (avions, corbeaux et autre)
+        //Les différents éléments (avions, oiseaux et autre)
+
+        this.load.image('balloon', 'assets/décors/balloon.jpg');
+        for(let e=1;e<=9;e++){
+            this.load.image('bird'+e, 'assets/décors/bird/flyingbird'+ e +'.jpg');
+        }
+        for(let f=1;f<=9;f++){
+            this.load.image('man'+f, 'assets/décors/walkingman/walkingman'+ f +'.jpg');
+        }
     }
 
     /**
@@ -150,6 +159,52 @@ class Tableau1 extends Phaser.Scene {
          this.red.blendMode=Phaser.BlendModes.ADD;
          this.white.blendMode=Phaser.BlendModes.ADD;
          */
+        this.bird = this.add.sprite(0, 0, 'animation').setOrigin(0,0);
+        this.anims.create({
+            key: 'flyingbird',
+            frames: [
+                {key:'bird1'},
+                {key:'bird2'},
+                {key:'bird3'},
+                {key:'bird4'},
+                {key:'bird5'},
+                {key:'bird6'},
+                {key:'bird7'},
+                {key:'bird8'},
+                {key:'bird9'},
+
+            ],
+            frameRate: 40,
+            repeat: -1,
+
+
+        });
+        this.bird.play('flyingbird');
+        this.bird.scale = 0.3
+
+
+        this.man = this.add.sprite(660, 370, 'animation').setOrigin(0,0);
+        this.anims.create({
+            key: 'walkingman',
+            frames: [
+                {key:'man1'},
+                {key:'man2'},
+                {key:'man3'},
+                {key:'man4'},
+                {key:'man5'},
+                {key:'man6'},
+                {key:'man7'},
+                {key:'man8'},
+                {key:'man9'},
+
+            ],
+            frameRate: 26,
+            repeat: -1,
+
+
+        });
+        this.man.play('walkingman');
+        this.man.scale = 0.4
 
 
     }
