@@ -144,38 +144,47 @@ class Tableau1 extends Phaser.Scene {
         this.purple.scale = 1.5
         this.purple.setVisible(false)
 
-        // dégradés de lumière de Q à M
+        // scan de lumière de Q à M (dégradé arc en ciel de haut en bas de l'immeuble)
 
         this.redGradient = this.add.image(885, 240, "red-gradient");
         this.redGradient.scale = 0.38
+        this.redGradient.setVisible(false)
 
         this.pinkGradient = this.add.image(885, 265, "pink-gradient");
         this.pinkGradient.scale = 0.38
+        this.pinkGradient.setVisible(false)
 
         this.purpleGradient = this.add.image(885, 295, "purple-gradient");
         this.purpleGradient.scale = 0.38
+        this.purpleGradient.setVisible(false)
 
-        this.darkBlueGrandient = this.add.image(885, 323, "dark-blue-gradient");
-        this.darkBlueGrandient.scale = 0.38
+        this.darkBlueGradient = this.add.image(885, 323, "dark-blue-gradient");
+        this.darkBlueGradient.scale = 0.38
+        this.darkBlueGradient.setVisible(false)
 
         this.blueGradient = this.add.image(885, 347, "blue-gradient");
         this.blueGradient.scale = 0.38
+        this.blueGradient.setVisible(false)
 
         this.flashygreenGradient = this.add.image(885, 405, "flashy-green-gradient");
         this.flashygreenGradient.scale = 0.38
+        this.flashygreenGradient.setVisible(false)
 
         this.greenGradient = this.add.image(885, 375, "green-gradient");
         this.greenGradient.scale = 0.38
+        this.greenGradient.setVisible(false)
 
         this.yellowGradient = this.add.image(885, 430, "yellow-gradient");
         this.yellowGradient.scale = 0.38
+        this.yellowGradient.setVisible(false)
 
         this.orangeGradient = this.add.image(885, 460, "orange-gradient");
         this.orangeGradient.scale = 0.38
+        this.orangeGradient.setVisible(false)
 
         this.redGradient1 = this.add.image(905, 483, "red-gradient");
         this.redGradient1.scale = 0.38
-
+        this.redGradient1.setVisible(false)
 
 
 
@@ -311,6 +320,53 @@ class Tableau1 extends Phaser.Scene {
         }
 
 
+        // de Q à M --------------couleurs simples-----------------
+        if (lettre === "q") {
+            this.redGradient.setVisible(true)
+
+        }
+        if (lettre === "s") {
+            this.pinkGradient.setVisible(true)
+
+        }
+        if (lettre === "d") {
+            this.purpleGradient.setVisible(true)
+
+        }
+        if (lettre === "f") {
+            this.darkBlueGradient.setVisible(true)
+
+        }
+        if (lettre === "g") {
+            this.blueGradient.setVisible(true)
+
+        }
+        if (lettre === "h") {
+            this.greenGradient.setVisible(true)
+
+        }
+        if (lettre === "j") {
+            this.flashygreenGradient.setVisible(true)
+
+        }
+        if (lettre === "k") {
+            this.yellowGradient.setVisible(true)
+
+        }
+        if (lettre === "l") {
+            this.orangeGradient.setVisible(true)
+
+        }
+        if (lettre === "m") {
+            this.redGradient1.setVisible(true)
+
+        }
+
+
+
+
+
+        //La touche qui éteint toutes les lumière : espace
         if (lettre === " ") {
             this.darkBlue.setVisible(false)
             this.white.setVisible(false)
@@ -322,12 +378,36 @@ class Tableau1 extends Phaser.Scene {
             this.purple.setVisible(false)
             this.red.setVisible(false)
             this.blue.setVisible(false)
-
+            this.redGradient1.setVisible(false)
+            this.redGradient.setVisible(false)
+            this.greenGradient.setVisible(false)
+            this.flashygreenGradient.setVisible(false)
+            this.pinkGradient.setVisible(false)
+            this.yellowGradient.setVisible(false)
+            this.blueGradient.setVisible(false)
+            this.darkBlueGradient.setVisible(false)
+            this.purpleGradient.setVisible(false)
+            this.orangeGradient.setVisible(false)
+            this.redGradient1.setVisible(false)
 
         }
+
     }
 
-        // de Q à M --------------couleurs simples-----------------
+    compositionQM(){
+        this.tweens.add({
+            targets:this.redGradient,
+            x: 300,
+            y: 0,
+            duration: 1000,
+
+        });
+
+        }
+
+
+
+
 
 
 
