@@ -113,7 +113,7 @@ class Tableau1 extends Phaser.Scene {
         this.pink.setVisible(false)
 
         this.white = this.add.image(385, 305, "white-light");
-        this.white.scale = 3.7
+        this.white.scale = 3.8
         this.white.setVisible(false)
 
         this.orange = this.add.image(725, 223, "orange-light");
