@@ -31,12 +31,15 @@ class Tableau1 extends Phaser.Scene {
 
         //Les différents éléments (avions, oiseaux et autre)
 
-        this.load.image('balloon', 'assets/décors/balloon.jpg');
+        this.load.image('balloon', 'assets/décors/balloon.png');
+        this.load.image('balloon1', 'assets/décors/balloon1.png');
+        this.load.image('balloon2', 'assets/décors/balloon2.png');
+        this.load.image('balloon3', 'assets/décors/balloon3.png');
         for (let e = 1; e <= 9; e++) {
-            this.load.image('bird' + e, 'assets/décors/bird/flyingbird' + e + '.jpg');
+            this.load.image('bird' + e, 'assets/décors/bird/flyingbird' + e + '.png');
         }
         for (let f = 1; f <= 9; f++) {
-            this.load.image('man' + f, 'assets/décors/walkingman/walkingman' + f + '.jpg');
+            this.load.image('man' + f, 'assets/décors/walkingman/walkingman' + f + '.png');
         }
     }
 
@@ -150,7 +153,7 @@ class Tableau1 extends Phaser.Scene {
         this.redGradient.scale = 0.38
         this.redGradient.setVisible(false)
 
-        this.pinkGradient = this.add.image(885, 265, "pink-gradient");
+        this.pinkGradient = this.add.image(885, 269, "pink-gradient");
         this.pinkGradient.scale = 0.38
         this.pinkGradient.setVisible(false)
 
@@ -205,7 +208,7 @@ class Tableau1 extends Phaser.Scene {
                 {key: 'bird9'},
 
             ],
-            frameRate: 40,
+            frameRate: 50,
             repeat: -1,
 
 
@@ -214,7 +217,7 @@ class Tableau1 extends Phaser.Scene {
         this.bird.scale = 0.1
 
 
-        this.man = this.add.sprite(660, 370, 'animation').setOrigin(0, 0);
+        this.man = this.add.sprite(663, 375, 'animation').setOrigin(0, 0);
         this.anims.create({
             key: 'walkingman',
             frames: [
@@ -229,13 +232,39 @@ class Tableau1 extends Phaser.Scene {
                 {key: 'man9'},
 
             ],
-            frameRate: 206,
+            frameRate: 60,
             repeat: -1,
 
 
         });
         this.man.play('walkingman');
-        this.man.scale = 0.4
+        this.man.scale = 0.5
+
+        this.ballon = this.add.image(885, 570, "balloon");
+        this.ballon.scale=0.06
+        this.ballon1 = this.add.image(285, 570, "balloon1");
+        this.ballon1.scale=0.06
+        this.ballon2 = this.add.image(485, 570, "balloon2");
+        this.ballon2.scale=0.06
+        this.ballon3 = this.add.image(85, 570, "balloon3");
+        this.ballon3.scale=0.06
+
+
+
+        //Tweens
+
+        this.tweens.add({
+            targets: [ this.redGradient, this.redGradient1, this.blueGradient, this.darkBlueGradient, this.greenGradient, this.flashygreenGradient, this.pinkGradient,this.purpleGradient, this.orangeGradient, this.yellowGradient ],
+            x: 950,
+            duration: 800,
+            ease: 'Power2',
+            loop:1000000,
+            yoyo: true,
+            delay: 10
+        });
+
+
+
 
 
     }
@@ -280,8 +309,9 @@ class Tableau1 extends Phaser.Scene {
         // de A à P --------------couleurs simples-----------------
         if (lettre === "a") {
             this.blue.setVisible(true)
-
         }
+
+
         if (lettre === "z") {
             this.red.setVisible(true)
 
@@ -362,7 +392,60 @@ class Tableau1 extends Phaser.Scene {
 
         }
 
+        //Touche de W à N
 
+        if (lettre === "w") {
+            this.tweens.add({
+                targets: this.bird,
+                x: 1000,
+                duration: 1000,
+                ease: 'Power2',
+            });
+
+        }
+        if (lettre === "x") {
+            this.tweens.add({
+                targets: this.man,
+                x: 856,
+                duration: 1000,
+                ease: 'Power2',
+            });
+
+        }
+        if (lettre === "c") {
+            this.tweens.add({
+                targets: this.ballon,
+                y: -50,
+                duration: 1000,
+                ease: 'Power2',
+            });
+
+        }
+        if (lettre === "v") {
+            this.tweens.add({
+                targets: this.ballon1,
+                y: -50,
+                duration: 1000,
+                ease: 'Power2',
+            });
+
+        }
+        if (lettre === "b") {
+            this.tweens.add({
+                targets: this.ballon2,
+                y: -50,
+                duration: 1000,
+                ease: 'Power2',
+            });
+        }
+        if (lettre === "n") {
+            this.tweens.add({
+                targets: this.ballon3,
+                y: -50,
+                duration: 1000,
+                ease: 'Power2',
+            });
+        }
 
 
 
@@ -394,16 +477,7 @@ class Tableau1 extends Phaser.Scene {
 
     }
 
-    compositionQM(){
-        this.tweens.add({
-            targets:this.redGradient,
-            x: 300,
-            y: 0,
-            duration: 1000,
 
-        });
-
-        }
 
 
 
