@@ -35,12 +35,11 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('balloon1', 'assets/décors/balloon1.png');
         this.load.image('balloon2', 'assets/décors/balloon2.png');
         this.load.image('balloon3', 'assets/décors/balloon3.png');
+        this.load.image('balloon4', 'assets/décors/balloon4.png');
         for (let e = 1; e <= 9; e++) {
             this.load.image('bird' + e, 'assets/décors/bird/flyingbird' + e + '.png');
         }
-        for (let f = 1; f <= 9; f++) {
-            this.load.image('man' + f, 'assets/décors/walkingman/walkingman' + f + '.png');
-        }
+
     }
 
     /**
@@ -193,7 +192,7 @@ class Tableau1 extends Phaser.Scene {
 
         //Animations de W à N
 
-        this.bird = this.add.sprite(0, 50, 'animation').setOrigin(0, 0);
+        this.bird = this.add.sprite(-50, 50, 'animation').setOrigin(0, 0);
         this.anims.create({
             key: 'flyingbird',
             frames: [
@@ -217,37 +216,21 @@ class Tableau1 extends Phaser.Scene {
         this.bird.scale = 0.1
 
 
-        this.man = this.add.sprite(663, 375, 'animation').setOrigin(0, 0);
-        this.anims.create({
-            key: 'walkingman',
-            frames: [
-                {key: 'man1'},
-                {key: 'man2'},
-                {key: 'man3'},
-                {key: 'man4'},
-                {key: 'man5'},
-                {key: 'man6'},
-                {key: 'man7'},
-                {key: 'man8'},
-                {key: 'man9'},
-
-            ],
-            frameRate: 60,
-            repeat: -1,
-
-
-        });
-        this.man.play('walkingman');
-        this.man.scale = 0.5
-
         this.ballon = this.add.image(885, 570, "balloon");
         this.ballon.scale=0.06
+
         this.ballon1 = this.add.image(285, 570, "balloon1");
         this.ballon1.scale=0.06
+
         this.ballon2 = this.add.image(485, 570, "balloon2");
         this.ballon2.scale=0.06
+
         this.ballon3 = this.add.image(85, 570, "balloon3");
         this.ballon3.scale=0.06
+
+        this.ballon4 = this.add.image(760, 570, "balloon4");
+        this.ballon4.scale=0.06
+
 
 
 
@@ -398,16 +381,17 @@ class Tableau1 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.bird,
                 x: 1000,
-                duration: 1000,
+                duration: 5000,
                 ease: 'Power2',
             });
 
         }
         if (lettre === "x") {
             this.tweens.add({
-                targets: this.man,
-                x: 856,
-                duration: 1000,
+                targets: this.ballon4,
+                y: -50,
+                loop:1000000,
+                duration: 5000,
                 ease: 'Power2',
             });
 
@@ -416,7 +400,8 @@ class Tableau1 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.ballon,
                 y: -50,
-                duration: 1000,
+                loop:1000000,
+                duration: 5000,
                 ease: 'Power2',
             });
 
@@ -425,7 +410,8 @@ class Tableau1 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.ballon1,
                 y: -50,
-                duration: 1000,
+                loop:1000000,
+                duration: 5000,
                 ease: 'Power2',
             });
 
@@ -434,7 +420,8 @@ class Tableau1 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.ballon2,
                 y: -50,
-                duration: 1000,
+                loop:1000000,
+                duration: 5000,
                 ease: 'Power2',
             });
         }
@@ -442,7 +429,8 @@ class Tableau1 extends Phaser.Scene {
             this.tweens.add({
                 targets: this.ballon3,
                 y: -50,
-                duration: 1000,
+                loop:1000000,
+                duration: 5000,
                 ease: 'Power2',
             });
         }
